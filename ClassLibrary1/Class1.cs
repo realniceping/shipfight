@@ -171,15 +171,15 @@ namespace ClassLibrary1
         }
 
         public void GameReset() {
-            int[,] map1 = new int[10,10];
-            int[,] map2 = new int[10, 10];
-            int turn = 1;
+            this.map1 = new int[10,10];
+            this.map2 = new int[10, 10];
+            this.turn = 1;
 
-            int killedBy1 = 0;
-            int killedBy2 = 0;
+            this.killedBy1 = 0;
+            this.killedBy2 = 0;
 
-            bool ready1 = false;
-            bool ready2 = false;
+            this.ready1 = false;
+            this.ready2 = false;
 
     }
 
