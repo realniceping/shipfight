@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "b722d031-3273-48ce-b62f-52e330811c9e": {
+      "ProjectGuid": "b722d031-3273-48ce-b62f-52e330811c9e",
+      "DisplayName": "ClassLibrary1",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
