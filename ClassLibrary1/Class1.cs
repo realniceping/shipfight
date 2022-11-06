@@ -171,7 +171,7 @@ namespace ClassLibrary1
         }
 
         public void GameReset() {
-            this.map1 = new int[10,10];
+            this.map1 = new int[10, 10];
             this.map2 = new int[10, 10];
             this.turn = 1;
 
