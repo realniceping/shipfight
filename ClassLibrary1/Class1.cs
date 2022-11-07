@@ -103,17 +103,18 @@ namespace ClassLibrary1
             if (client == 1) {
                 lastA = a;
                 lastB = b;
+                turn = 2;
                 if (map2[a,b] == 0) {
-                    map2[a,b] = -2;
+                    map2[a,b] = -2; //return -1 if miss
                     return -1;
                 }
                 if (map2[a,b] == 1) {
                     map2[a,b] = -1;
                     killedBy1++;
                     if (killedBy1 == 20) {
-                        return 2;
+                        return 2; //return 2 if win
                     }
-                    return 1;
+                    return 1; // return 1 if hit
                 }
             }
 
@@ -121,6 +122,7 @@ namespace ClassLibrary1
             {
                 lastA = a;
                 lastB = b;
+                turn = 1;
                 if (map1[a,b] == 0)
                 {
                     map1[a,b] = -2;

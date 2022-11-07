@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\cplusplus\\shipfighttest\\shipfighttest\\shipfighttest.csproj": {}
+    "D:\\cplusplus\\ClassLibrary1\\shipfighttest\\shipfighttest.csproj": {}
   },
   "projects": {
-    "D:\\cplusplus\\shipfighttest\\shipfighttest\\shipfighttest.csproj": {
+    "D:\\cplusplus\\ClassLibrary1\\shipfighttest\\shipfighttest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\cplusplus\\shipfighttest\\shipfighttest\\shipfighttest.csproj",
+        "projectUniqueName": "D:\\cplusplus\\ClassLibrary1\\shipfighttest\\shipfighttest.csproj",
         "projectName": "shipfighttest",
-        "projectPath": "D:\\cplusplus\\shipfighttest\\shipfighttest\\shipfighttest.csproj",
+        "projectPath": "D:\\cplusplus\\ClassLibrary1\\shipfighttest\\shipfighttest.csproj",
         "packagesPath": "C:\\Users\\arsen\\.nuget\\packages\\",
-        "outputPath": "D:\\cplusplus\\shipfighttest\\shipfighttest\\obj\\",
+        "outputPath": "D:\\cplusplus\\ClassLibrary1\\shipfighttest\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\arsen\\AppData\\Roaming\\NuGet\\NuGet.Config",
