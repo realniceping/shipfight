@@ -33,7 +33,7 @@ namespace call_queue
         private static Type objectType = Type.GetTypeFromCLSID(TypeGuid)
                 ?? throw new ArgumentException($"Сборка с идентификатором {TypeGuid} не обнаружена");
 
-        private static dynamic @object = Activator.CreateInstance(Type.GetTypeFromProgID("ShipFightServer"));
+        private static dynamic @object = Activator.CreateInstance(objectType);
 
         public static void DrawGameField(int[,] UserField, int[,] EnemyField)
         {
@@ -137,8 +137,9 @@ namespace call_queue
             string responce = @object.TurnRequest(client);
             
             while (responce == "-1 -1 0") {
+                Thread.Sleep(200);
                 responce = @object.TurnRequest(client);
-                Thread.Sleep(5000);
+                
             }
 
             return responce;
@@ -148,9 +149,8 @@ namespace call_queue
         {
             bool status = @object.Ready(client);
             while (status == false) {
-                
-                status = @object.Ready(client);
-                Thread.Sleep(000);
+                Thread.Sleep(200);
+                status = @object.Ready(client);                
             }
 
         }
@@ -172,13 +172,15 @@ namespace call_queue
 
         private static bool UserShootHandler() { //return true if game end
             int a, b;
-            int answer;
+            int answer = 0;
             Console.WriteLine("Let's do a turn!");
             Console.Write("Enter X coordinate: ");
             a = Convert.ToInt32(Console.ReadLine());
             Console.Write("Enter Y coordinate: ");
             b = Convert.ToInt32(Console.ReadLine());
+            
             answer = @object.PointShootEventHandler(a, b, client);
+
             if (answer == -1) { 
                 EnemyField[a, b] = -1;
                 return false;
@@ -186,6 +188,10 @@ namespace call_queue
             if (answer == 1) {
                 EnemyField[a, b] = 1;
                 return false;
+            }
+            if (answer == 3)
+            {
+                Console.WriteLine("you shoot to one ceil twice");
             }
             return true;
 
@@ -200,20 +206,19 @@ namespace call_queue
                 GamePreparation();
                 success = @object.setField(MyField, client);
             }
+
             string serverInfo = @object.GetServerInfo();
             Console.WriteLine(serverInfo);
-            Thread.Sleep(2000);
-            serverInfo = @object.GetServerInfo();
-            Console.WriteLine(serverInfo);
-
+            
             await DolbitsaVServerReady();
-            DrawGameField(MyField, EnemyField);
-            Console.WriteLine("Enemy turn's first");
+           
+            Console.WriteLine("you turn first");
             
             Console.WriteLine("GAME! GAME! GAME!");
 
             bool areGameEnd = false;
             while (!areGameEnd) {
+                
                 Console.WriteLine("Whit when your emeny will did a turn");
                 string responce = await DolbitsaVServerTurn();
                 Console.WriteLine("Your turn");
@@ -222,6 +227,7 @@ namespace call_queue
                 int y = Convert.ToInt32(responceParsed[1]);
                 int status = Convert.ToInt32(responceParsed[2]);
                 EmenyShootHandler(x, y);
+                DrawGameField(MyField, EnemyField);
                 areGameEnd = UserShootHandler();
 
             }
