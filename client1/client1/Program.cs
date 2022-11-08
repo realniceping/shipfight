@@ -23,9 +23,10 @@ namespace call_queue
 
     class Program
     {
-
+        //"36F5011E-390F-4521-9E1B-F1BBEFCE664C"
+        //[Guid()]
         private static Guid TypeGuid => Guid.Parse("65D44511-BFD4-45EF-B5A5-A044B358C364");
-        private static int client = 2;
+        private static int client = 1;
 
         private static int[,] MyField = new int[10, 10];
         private static int[,] EnemyField = new int[10, 10];
@@ -51,7 +52,8 @@ namespace call_queue
                     {
                         Console.Write("#");
                     };
-                    if (UserField[i, j] == -1) {
+                    if (UserField[i, j] == -1)
+                    {
                         Console.Write("O");
                     }
 
@@ -133,10 +135,12 @@ namespace call_queue
             }
         }
 
-        private static async Task<string> DolbitsaVServerTurn() {
+        private static async Task<string> DolbitsaVServerTurn()
+        {
             string responce = @object.TurnRequest(client);
             
-            while (responce == "-1 -1 0") {
+            while (responce == "-1 -1 0")
+            {
                 responce = @object.TurnRequest(client);
                 Thread.Sleep(5000);
             }
@@ -147,7 +151,8 @@ namespace call_queue
         private static async Task DolbitsaVServerReady()
         {
             bool status = @object.Ready(client);
-            while (status == false) {
+            while (status == false)
+            {
                 
                 status = @object.Ready(client);
                 Thread.Sleep(000);
@@ -157,20 +162,23 @@ namespace call_queue
 
         private static void EmenyShootHandler(int a, int b)
         {
-            if (a == -1 || b == -1)
-            {
+            if (a == -1 || b == -1) {
+                Console.WriteLine("first turn");
                 return;
             }
             Console.WriteLine($"Enemy shooted by {a}; {b} ceil");
-            if (MyField[a, b] == 1) { 
+            if (MyField[a, b] == 1)
+            {
                 MyField[a, b] = -1;
             }
-            if (MyField[a, b] == 0) {
+            if (MyField[a, b] == 0)
+            {
                 MyField[a, b] = -1;
             }
         }
 
-        private static bool UserShootHandler() { //return true if game end
+        private static bool UserShootHandler()
+        { //return true if game end
             int a, b;
             int answer;
             Console.WriteLine("Let's do a turn!");
@@ -179,48 +187,51 @@ namespace call_queue
             Console.Write("Enter Y coordinate: ");
             b = Convert.ToInt32(Console.ReadLine());
             answer = @object.PointShootEventHandler(a, b, client);
-            if (answer == -1) { 
+            Console.WriteLine(answer);
+            if (answer == -1)
+            {
                 EnemyField[a, b] = -1;
                 return false;
             }
-            if (answer == 1) {
+            if (answer == 1)
+            {
                 EnemyField[a, b] = 1;
                 return false;
             }
             return true;
 
         }
-
+        
         static async Task Main(string[] args)
         {
-            
 
+            @object.GameReset();
+            
             bool success = false;
-            while (success != true) {
+            while (success != true)
+            {
                 GamePreparation();
                 success = @object.setField(MyField, client);
             }
             string serverInfo = @object.GetServerInfo();
             Console.WriteLine(serverInfo);
-            Thread.Sleep(2000);
-            serverInfo = @object.GetServerInfo();
-            Console.WriteLine(serverInfo);
 
             await DolbitsaVServerReady();
             DrawGameField(MyField, EnemyField);
             Console.WriteLine("Enemy turn's first");
-            
+           
             Console.WriteLine("GAME! GAME! GAME!");
 
             bool areGameEnd = false;
-            while (!areGameEnd) {
-                Console.WriteLine("Whit when your emeny will did a turn");
+            while (!areGameEnd) { 
+            
+                Console.WriteLine("Whit when your emeny will did a turn");    
                 string responce = await DolbitsaVServerTurn();
                 Console.WriteLine("Your turn");
                 string[] responceParsed = responce.Split(" ");
                 int x = Convert.ToInt32(responceParsed[0]);
                 int y = Convert.ToInt32(responceParsed[1]);
-                int status = Convert.ToInt32(responceParsed[2]);
+ 
                 EmenyShootHandler(x, y);
                 areGameEnd = UserShootHandler();
 
@@ -230,7 +241,7 @@ namespace call_queue
 
         }
 
-        
+
 
     }
 
