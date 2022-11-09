@@ -148,13 +148,12 @@ namespace ClassLibrary1
             {
                 if (client == 1)
                 {
-                    map1 = field;
-                    ready1 = true;
+                    
 
                     for (int i = 0; i < 10; i++) {
                         for (int j = 0; j < 10; j++) {
-                            int a = field[i,j];
-                            accessor.Write((((int)table.map1) + (((i * 10) + j) * 4)), a);
+                            
+                            accessor.Write((((int)table.map1) + (((i * 10) + j) * 4)), field[i,j]);
                         }
                     }
                    
@@ -164,14 +163,13 @@ namespace ClassLibrary1
                 }
                 if (client == 2)
                 {
-                    map2 = field;
-                    ready2 = true;
+                    
                     for (int i = 0; i < 10; i++)
                     {
                         for (int j = 0; j < 10; j++)
                         {
-                            int a = field[i, j];
-                            accessor.Write(((int)table.map2 + (((i * 10) + j) * 4)), a);
+                            
+                            accessor.Write((((int)table.map2) + (((i * 10) + j) * 4)), field[i, j]);
                         }
                     }
                     accessor.Write((int)table.ready2, true);
@@ -189,20 +187,18 @@ namespace ClassLibrary1
                 accessor.Write((int)table.lastB, b);
                 turn = 2;
                 accessor.Write((int)table.turn, 2);
-                if (accessor.ReadInt32((a * 10 + b) + 400) == 0) {
+                if (accessor.ReadInt32((a * 10 + b) * 4 + 400) == 0) {
 
-                    accessor.Write(((a * 10 + b) + 400), -2);
+                    accessor.Write(((a * 10 + b) * 4 + 400), -2);
  
                     //return -1 if miss
                     return -1;
                 }
-                if (accessor.ReadInt32((a * 10 + b) + 400) == -2 || accessor.ReadInt32((a * 10 + b) + 400) == -2) {
-                    return 3;
-                }
-                if (accessor.ReadInt32((a * 10 + b) + 400) == 1) {
+                
+                if (accessor.ReadInt32((a * 10 + b) * 4 + 400) == 1) {
                    
                     
-                    accessor.Write(((a * 10 + b) + 400), -1);
+                    accessor.Write(((a * 10 + b) * 4 + 400), -1);
                  
                     
                  
@@ -223,23 +219,20 @@ namespace ClassLibrary1
                 accessor.Write((int)table.lastB, b);
                 accessor.Write((int)table.turn, 1);
 
-                if (accessor.ReadInt32((a * 10 + b)) == 0)
+                if (accessor.ReadInt32((a * 10 + b) * 4) == 0)
                 {
                     
                   
-                    accessor.Write((a * 10 + b), -2);
+                    accessor.Write((a * 10 + b) * 4, -2);
                    
                     
                     return -1;
                 }
-                if (accessor.ReadInt32((a * 10 + b)) == -2 || accessor.ReadInt32((a * 10 + b)) == -2)
-                {
-                    return 3;
-                }
-                if (accessor.ReadInt32((a * 10 + b)) == 1)
+                
+                if (accessor.ReadInt32((a * 10 + b) * 4) == 1)
                 {
                                                       
-                    accessor.Write((a * 10 + b), -1);                                                      
+                    accessor.Write((a * 10 + b) * 4, -1);                                                      
                     accessor.Write((int)table.killedBy2, accessor.ReadInt32((int)table.killedBy2) + 1);
                   
                     

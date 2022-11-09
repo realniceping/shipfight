@@ -5,3 +5,10 @@ D:\cplusplus\ClassLibrary1\ClassLibrary1\obj\Debug\ClassLibrary1.csproj.CoreComp
 D:\cplusplus\ClassLibrary1\ClassLibrary1\obj\Debug\ClassLibrary1.dll
 D:\cplusplus\ClassLibrary1\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
 D:\cplusplus\ClassLibrary1\ClassLibrary1\bin\Debug\ClassLibrary1.tlb
+D:\shipFight\shipfight\ClassLibrary1\bin\Debug\ClassLibrary1.dll
+D:\shipFight\shipfight\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
+D:\shipFight\shipfight\ClassLibrary1\bin\Debug\ClassLibrary1.tlb
+D:\shipFight\shipfight\ClassLibrary1\obj\Debug\ClassLibrary1.csproj.AssemblyReference.cache
+D:\shipFight\shipfight\ClassLibrary1\obj\Debug\ClassLibrary1.csproj.CoreCompileInputs.cache
+D:\shipFight\shipfight\ClassLibrary1\obj\Debug\ClassLibrary1.dll
+D:\shipFight\shipfight\ClassLibrary1\obj\Debug\ClassLibrary1.pdb

@@ -67,7 +67,7 @@ namespace call_queue
                     {
                         Console.Write("#");
                     }
-                    if (UserField[i, j] == -1)
+                    if (EnemyField[i, j] == -1)
                     {
                         Console.Write("O");
                     }
@@ -97,8 +97,24 @@ namespace call_queue
             }
         }
 
+        private static void setEnemyField()
+        {
+            
+                for (int i = 0; i < 10; i++)
+                {
+                    for (int j = 0; j < 10; j++)
+                    {
+                        EnemyField[i, j] = 0;
+                       
+                    }
+                }
+            
+
+        }
+
         private static void AutoSet()
         {
+           
             for (int i = 0; i < 10; i++)
             {
                 for (int j = 0; j < 10; j++)
@@ -123,6 +139,8 @@ namespace call_queue
             Console.Write(">>> ");
             int set = 0;
             set = Convert.ToInt32(Console.ReadLine());
+
+
             if (set == 1)
             {
                 ManualSet();
@@ -131,6 +149,7 @@ namespace call_queue
             {
                 AutoSet();
             }
+            setEnemyField();
         }
 
         private static async Task<string> DolbitsaVServerTurn() {
@@ -192,6 +211,7 @@ namespace call_queue
             if (answer == 3)
             {
                 Console.WriteLine("you shoot to one ceil twice");
+                return false;
             }
             return true;
 
@@ -212,10 +232,9 @@ namespace call_queue
             
             await DolbitsaVServerReady();
            
-            Console.WriteLine("you turn first");
             
             Console.WriteLine("GAME! GAME! GAME!");
-
+            Console.WriteLine("Enemy Turn First");
             bool areGameEnd = false;
             while (!areGameEnd) {
                 

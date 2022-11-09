@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Gkq4hacQtUL6r+69IX1XF7t0BpNv4gFF2j2pxrJkmWxrspnXNMfGVT8N8HbYBKcPEt+bi3WBJ1cEW3TN4P3cVA==",
+  "dgSpecHash": "hNE5c53+f0+JBKfoL3Z03xgFrJ/vy4/XOXxH7AbvpTJRwscKa1N7cXQ4viVK7ULWPL1TDrXqs2xZAym5JqAbag==",
   "success": true,
-  "projectFilePath": "D:\\cplusplus\\ClassLibrary1\\shipfighttest\\shipfighttest.csproj",
+  "projectFilePath": "D:\\shipFight\\shipfight\\shipfighttest\\shipfighttest.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

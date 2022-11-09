@@ -35,7 +35,7 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>chlen.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>ship123.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="chlen.pfx" />
+    <None Include="ship123.pfx" />
     <None Include="ship_fight_server.pfx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
